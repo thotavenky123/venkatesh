@@ -1,0 +1,56 @@
+
+
+# include<stdio.h>
+#include<conio.h>
+#include<string.h>
+#include<ctype.h>
+struct hierar
+{
+char node[10];
+char line[10];
+int hops;
+}
+state[20];
+void main()
+{
+int i,boo,small,t1,t2,j,n;
+char ch,rnode[10],temp[10];
+clrscr();
+printf(“Enter number of nodes”);
+scanf(“%d”,&n);
+printf(“Enter %d node,line,hops”,n);
+for(i=0;i<n;i++)
+scanf(“%s %s %d”,&state[i].node,&state[i].line,&state[i].hops);
+printf(“ \n node \t \t line \t \t hops”);
+for(i=0;i<n;i++)
+printf(“%s \t \t %s \t \t %d \n”,state[i].node,state[i].line,state[i].hops);
+printf(“Enter starting point”);
+scanf(“%s”,&rnode);
+printf(“\n node \t \t line \t \t hops \n”);
+for(i=0;i<n;i++)
+{
+t1=toascii(rnode[0]);
+t2=toascii(state[i].node[0]);
+if(t1=t2)
+boo=0;
+else
+boo=1;
+if(boo=0)
+printf(“%s \t \t %s \t \t %d \n”,state[i].node,state[i].line,state[i].hops);
+else
+{
+printf(“%c”,state[i].node[0]);
+printf(“\t \t %s”,state[i].line);
+strcpy(temp,state[i].node);
+small=state[i].hops;
+for(j=i;temp[0]==state[i].node[0];j++)
+{
+if(state[j].hops<small)
+small=state[j].hops;
+i++;
+}
+printf(“\t \t %d \n”,small);
+}
+}
+getch();
+} 
